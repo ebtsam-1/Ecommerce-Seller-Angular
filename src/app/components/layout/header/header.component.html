@@ -7,12 +7,13 @@
               <a class="nav-link" data-widget="pushmenu" href="" role="button"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-              <a href="/admin" class="nav-link">Home</a>
+              <a routerLink="/home" class="nav-link">Home</a>
           </li>
       </ul>
-      <ul class="navbar-nav ml-auto"><li class="nav-item">
-              <a class="nav-link" href="/admin/logout" role="button">Logout <i class="fa fa-sign-out"></i>
-              </a></li>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+              <a class="nav-link" href="/logout" role="button">Logout <i class="fa fa-sign-out"></i></a>
+        </li>
       </ul>
   </nav>
   <!-- /.navbar -->
@@ -29,7 +30,7 @@
           <!-- Sidebar user (optional) -->
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
               <!-- <div class="image">
-                  <img src="/uploads/<?= $_SESSION['avatar'] ?>" alt="User Image">
+                  <img src="" alt="User Image">
               </div> -->
               <div class="info">
                   <a href="#" class="d-block">Seller Name</a>
@@ -42,24 +43,24 @@
                   data-accordion="false">
                   <!-- Add icons to the links using the .nav-icon class
                        with font-awesome or any other icon font library -->
-                  <li class="nav-item"><a href="home" class="nav-link"><i class="nav-icon fa fa-home"></i><p>Home</p></a></li>
+                  <li class="nav-item"><a routerLink="home" class="nav-link"><i class="nav-icon fa fa-home"></i><p>Home</p></a></li>
+                  <li class="nav-item"><a routerLink="profile" class="nav-link"><i class="nav-icon fa fa-user"></i><p>Profile</p></a></li>
                   <li class="nav-item">
                       <a href="#" class="nav-link"><i class="nav-icon fa fa-coffee"></i><p>Products<i class="fas fa-angle-left right"></i></p></a>
                       <ul class="nav nav-treeview">
-                          <li class="nav-item"><a href="/admin/products" class="nav-link"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
-                          <li class="nav-item"><a href="/admin/products/add" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Add Product</p></a></li>
+                          <li class="nav-item"><a routerLink="/products" class="nav-link"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
+                          <li class="nav-item"><a routerLink="/products/add" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Add Product</p></a></li>
                       </ul>
                   </li>
                   <li class="nav-item">
                       <a href="#" class="nav-link"><i class="nav-icon fa fa-shopping-cart"></i><p>Orders<i class="fas fa-angle-left right"></i></p></a>
                       <ul class="nav nav-treeview">
-                          <li class="nav-item"><a href="/admin/orders" class="nav-link"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
-                          <li class="nav-item"><a href="/admin/orders/processing" class="nav-link"><i class="nav-icon fa fa-clock-o"></i><p>Processing</p></a></li>
-                          <li class="nav-item"><a href="/admin/orders/add" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Add Order</p></a></li>
+                          <li class="nav-item"><a routerLink="/orders" class="nav-link"><i class="nav-icon fa fa-asterisk"></i><p>All</p></a></li>
+                          <li class="nav-item"><a routerLink="/requested" class="nav-link"><i class="nav-icon fa fa-shopping-cart"></i><p>Requested Orders</p></a></li>
+                          <li class="nav-item"><a routerLink="/fulfilled" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Fulfilled Orders</p></a></li>
+                          <li class="nav-item"><a routerLink="/unfulfilled" class="nav-link"><i class="nav-icon fa fa-plus"></i><p>Unfulfilled Orders</p></a></li>
                       </ul>
                   </li>
-
-<!--                    <li class="nav-item"><a href="/admin/orders" class="nav-link"><i class="nav-icon fa fa-list-alt "></i><p>Checks</p></a></li>-->
 
                   <li class="nav-item">
                       <a href="#" class="nav-link"><i class="nav-icon fa fa-th-list"></i><p>Categories<i class="fas fa-angle-left right"></i></p></a>

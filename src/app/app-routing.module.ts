@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/auth/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { MainLayoutComponent } from './components/layout/main-layout/main-layout.component';
 
@@ -13,7 +14,7 @@ const routes: Routes =  [
       //   path: 'user',
       //   loadChildren: () => import('src/app/modules/user/user.module').then(m => m.UserModule)
       // },
-      // { path: 'login', component: LoginComponent },
+      //
       // { path: 'login/:error', component: LoginComponent },
       // { path: 'register', component: RegisterComponent },
       // { path: 'register/:error', component: RegisterComponent },
@@ -21,6 +22,7 @@ const routes: Routes =  [
 
     ]
   },
+  { path: 'login', component: LoginComponent},
   // { path: '**', component: NotFoundComponent }
 ];
 
