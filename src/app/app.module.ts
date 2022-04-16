@@ -18,6 +18,7 @@ import { RequestedOrdersComponent } from './components/orders-managment/requeste
 import { LatestComponent } from './components/orders-managment/latest/latest.component';
 import { FulfilledComponent } from './components/orders-managment/fulfilled/fulfilled.component';
 import { NotFulfilledComponent } from './components/orders-managment/not-fulfilled/not-fulfilled.component';
+import { PickedOrdersComponent } from './components/orders-managment/picked-orders/picked-orders.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NotFulfilledComponent } from './components/orders-managment/not-fulfill
     RequestedOrdersComponent,
     LatestComponent,
     FulfilledComponent,
-    NotFulfilledComponent
+    NotFulfilledComponent,
+    PickedOrdersComponent
   ],
   imports: [
     BrowserModule,

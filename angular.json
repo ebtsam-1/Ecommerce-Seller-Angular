@@ -27,11 +27,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "src/assets/adminlte.min.css"
+              "src/styles.css"
             ],
             "scripts": [
-              "src/assets/adminlte.min.js"
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {

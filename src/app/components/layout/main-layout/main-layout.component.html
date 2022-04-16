@@ -1,7 +1,17 @@
-<app-header></app-header>
+<div class="horizontalMenucontainer" style="min-width: 432px;">
 
-<div class="content-wrapper">
-  <router-outlet></router-outlet>
+<div id="global-loader">
+  <img src="assets/img/loader.svg" class="loader-img" alt="Loader">
 </div>
-
+<!-- /Loader -->
+<div class="page">
+<app-header></app-header>
+<div class="main-content horizontal-content">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 <app-footer></app-footer>
+
+</div>
+</div>
