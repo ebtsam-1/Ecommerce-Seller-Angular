@@ -9,6 +9,11 @@ const routes: Routes =  [
     path: '', component: MainLayoutComponent, children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
+      { path: 'orders', component: HomeComponent },
+      { path: 'orders/pending', component: HomeComponent },
+      { path: 'orders/picked', component: HomeComponent },
+      { path: 'payments/fulfilled', component: HomeComponent },
+      { path: 'payments/unfulfilled', component: HomeComponent },
 
       // {
       //   path: 'user',
