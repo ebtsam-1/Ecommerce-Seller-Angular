@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/auth/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { MainLayoutComponent } from './components/layout/main-layout/main-layout.component';
+import {FulfilledComponent} from "./components/orders-managment/fulfilled/fulfilled.component";
+import {NotFulfilledComponent} from "./components/orders-managment/not-fulfilled/not-fulfilled.component";
+import {PickedOrdersComponent} from "./components/orders-managment/picked-orders/picked-orders.component";
+import {RequestedOrdersComponent} from "./components/orders-managment/requested-orders/requested-orders.component";
 
 const routes: Routes =  [
   {
@@ -10,10 +14,10 @@ const routes: Routes =  [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'orders', component: HomeComponent },
-      { path: 'orders/pending', component: HomeComponent },
-      { path: 'orders/picked', component: HomeComponent },
-      { path: 'payments/fulfilled', component: HomeComponent },
-      { path: 'payments/unfulfilled', component: HomeComponent },
+      { path: 'orders/pending', component: RequestedOrdersComponent },
+      { path: 'orders/picked', component: PickedOrdersComponent },
+      { path: 'payments/fulfilled', component: FulfilledComponent },
+      { path: 'payments/unfulfilled', component: NotFulfilledComponent },
 
       // {
       //   path: 'user',
