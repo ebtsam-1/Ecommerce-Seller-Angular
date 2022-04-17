@@ -7,16 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./picked-orders.component.css']
 })
 export class PickedOrdersComponent implements OnInit {
-  dtOptions: DataTables.Settings = {};
   orders: any[] = [];
   constructor(private OrderService:OrderService) {
     this.orders=[]
    }
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers'
-    };
   }
 
   getPickedOrders(){
