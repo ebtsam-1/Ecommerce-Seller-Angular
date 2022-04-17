@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { DataTablesModule } from "angular-datatables";
+//import { DataTablesModule } from "angular-datatables";
+import {MatTableModule} from '@angular/material/table';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,7 @@ import { LatestComponent } from './components/orders-managment/latest/latest.com
 import { FulfilledComponent } from './components/orders-managment/fulfilled/fulfilled.component';
 import { NotFulfilledComponent } from './components/orders-managment/not-fulfilled/not-fulfilled.component';
 import { PickedOrdersComponent } from './components/orders-managment/picked-orders/picked-orders.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { PickedOrdersComponent } from './components/orders-managment/picked-orde
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DataTablesModule,
+    //DataTablesModule,
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
