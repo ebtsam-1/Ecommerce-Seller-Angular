@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+//import { DataTablesModule } from "angular-datatables";
 import {MatTableModule} from '@angular/material/table';
 
 
@@ -45,6 +46,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    //DataTablesModule,
     BrowserAnimationsModule,
     MatTableModule
   ],
