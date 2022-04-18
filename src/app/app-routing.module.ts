@@ -4,6 +4,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { MainLayoutComponent } from './components/layout/main-layout/main-layout.component';
 import { CreateProductComponent } from './components/products-managment/create-product/create-product.component';
+import { EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
 import { ProductsComponent } from './components/products-managment/products/products.component';
 
 const routes: Routes =  [
@@ -18,6 +19,7 @@ const routes: Routes =  [
       { path: 'payments/unfulfilled', component: HomeComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'products/create', component: CreateProductComponent },
+      { path: 'products/edit/:id', component: EditProductComponent },
 
 
       // {

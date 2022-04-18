@@ -2,9 +2,9 @@
   <div class="my-auto">
     <div class="d-flex">
       <h4 class="content-title mb-0 my-auto">Products</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">Create new Product</span>
+      <a routerLink="products/edit/1">Edit</a>
     </div>
   </div>
-
 </div>
 <div *ngIf="dataSource">
   <div class="row row-sm">
@@ -12,10 +12,7 @@
       <div class="card">
         <div class="card-header pb-0">
           <div class="d-flex justify-content-between">
-            <h4 class="card-title mg-b-0">STRIPED ROWS</h4>
-            <i class="mdi mdi-dots-horizontal text-gray"></i>
           </div>
-          <p class="tx-12 tx-gray-500 mb-2">Example of Valex Striped Rows.. <a href="">Learn more</a></p>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -31,6 +28,8 @@
                   <th>Discount</th>
                   <th>Available</th>
                   <th>Category</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -44,6 +43,8 @@
                   <td>{{product.discount}}</td>
                   <td>{{product.available}}</td>
                   <td>{{product.category.name}}</td>
+                  <td><a routerLink="edit/1" class="btn btn-dark">Edit</a></td>
+                  <td><button class="btn btn-dark">Delete</button></td>
                 </tr>
               </tbody>
             </table>

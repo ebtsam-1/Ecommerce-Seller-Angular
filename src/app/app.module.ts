@@ -21,6 +21,7 @@ import { FulfilledComponent } from './components/orders-managment/fulfilled/fulf
 import { NotFulfilledComponent } from './components/orders-managment/not-fulfilled/not-fulfilled.component';
 import { PickedOrdersComponent } from './components/orders-managment/picked-orders/picked-orders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LatestComponent,
     FulfilledComponent,
     NotFulfilledComponent,
-    PickedOrdersComponent
+    PickedOrdersComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,

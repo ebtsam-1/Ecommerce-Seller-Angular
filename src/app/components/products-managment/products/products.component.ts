@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductsComponent implements OnInit {
 
-  dataSource : Product[] =[];
+  dataSource : Product[] |null =null;
   // displayedColumns: string[] = ['id','image','name','price','discount','category_name','description','available'];
   constructor(private productService:ProductService) { }
 
