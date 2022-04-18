@@ -11,28 +11,31 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class CreateProductComponent implements OnInit {
 
-  prodCreatForm: FormGroup;
-  categories:Category[] = [];
-  constructor(private fb: FormBuilder,
-    private productService:ProductService,
-    private router:Router,
-    private activatedRoute:ActivatedRoute) {
+  formData: FormData = new FormData()
+  selectedFile: string | null = null;
 
-      this.prodCreatForm = this.fb.group({
-        name: ['', [Validators.required]],
-        category_id: ['', [Validators.required]],
-        description: ['', [Validators.required]],
-        quantity: ['',[Validators.required]],
-        price: ['',[Validators.required]],
-        discount: ['',[Validators.required]],
-      });
-    }
+  prodCreatForm: FormGroup;
+  categories: Category[] = [];
+  constructor(private fb: FormBuilder,
+    private productService: ProductService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
+
+    this.prodCreatForm = this.fb.group({
+      name: ['', [Validators.required]],
+      category_id: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      quantity: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      discount: ['', [Validators.required]],
+    });
+  }
 
   ngOnInit(): void {
-    this.productService.CategoryAll().subscribe(res=>{
-         this.categories = res.data;
+    this.productService.CategoryAll().subscribe(res => {
+      this.categories = res.data;
 
-         console.log(this.categories);
+      console.log(this.categories);
     })
   }
 
@@ -55,8 +58,18 @@ export class CreateProductComponent implements OnInit {
     return this.prodCreatForm.get('discount');
   }
 
+  onFileSelect(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0] as File;
+      console.log(file);
+      this.selectedFile = file.name;
+      this.formData.append('image', file);
+      console.log(this.formData);
+    }
+  }
 
-  create(){
+
+  create() {
 
     let prodModel = {
       name: this.prodCreatForm.value.name,
@@ -65,18 +78,18 @@ export class CreateProductComponent implements OnInit {
       quantity: this.prodCreatForm.value.quantity,
       price: this.prodCreatForm.value.price,
       discount: this.prodCreatForm.value.discount,
-     }
+    }
 
-     console.log(JSON.stringify(prodModel));
+    console.log(JSON.stringify(prodModel));
 
     this.productService.productCreation(prodModel).subscribe(
-      data =>{
+      data => {
         console.log(data)
         // let userToken = data.data.token;
         // localStorage.setItem('userToken',userToken);
         // this.router.navigate(['home',data.data.name]);
       },
-      error =>{
+      error => {
         // this.router.navigate(['register',error.error['message']]);
         console.log(error);
       });

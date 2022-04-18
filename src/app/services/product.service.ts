@@ -14,7 +14,8 @@ export class ProductService {
   constructor(private httpClient:HttpClient
   ) {
     this.httpOptions =  {headers: new HttpHeaders({
-      'Content-Type': 'application/json','Accept':'application/json'
+      // 'Content-Type': 'application/json',
+      'Accept':'application/json'
        ,'Authorization': `Bearer ${localStorage.getItem('userToken')}`
       })};
 

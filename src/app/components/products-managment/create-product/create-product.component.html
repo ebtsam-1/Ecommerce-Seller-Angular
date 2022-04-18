@@ -35,6 +35,16 @@
           </div>
           </div>
         </div>
+        <div class="mb-3">
+          <label for="file">Product Image</label>
+          <input
+              id="file"
+              type="file"
+              class="form-control"
+
+              (change)="onFileSelect($event)">
+      </div>
+
         <div class="form-group">
           <textarea class="form-control mg-t-20" formControlName="description" placeholder="Textarea (success state)" required="" rows="3">Description</textarea>
           <div class="alert alert-warning" [hidden]="description?.valid || description?.untouched">
