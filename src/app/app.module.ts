@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layout/header/header.component';
@@ -16,12 +15,13 @@ import { ProductsComponent } from './components/products-managment/products/prod
 import { CreateProductComponent } from './components/products-managment/create-product/create-product.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RequestedOrdersComponent } from './components/orders-managment/requested-orders/requested-orders.component';
-import { LatestComponent } from './components/orders-managment/latest/latest.component';
 import { FulfilledComponent } from './components/orders-managment/fulfilled/fulfilled.component';
 import { NotFulfilledComponent } from './components/orders-managment/not-fulfilled/not-fulfilled.component';
 import { PickedOrdersComponent } from './components/orders-managment/picked-orders/picked-orders.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
+import { AllOrdersComponent } from './components/orders-managment/all-orders/all-orders.component';
+
 
 @NgModule({
   declarations: [
@@ -35,11 +35,12 @@ import { EditProductComponent } from './components/products-managment/edit-produ
     CreateProductComponent,
     ProfileComponent,
     RequestedOrdersComponent,
-    LatestComponent,
     FulfilledComponent,
     NotFulfilledComponent,
     PickedOrdersComponent,
     EditProductComponent
+    AllOrdersComponent
+
   ],
   imports: [
     BrowserModule,

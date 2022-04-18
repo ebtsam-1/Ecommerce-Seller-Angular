@@ -31,7 +31,9 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/custom.js"
+              "src/assets/js/custom.js",
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net/js/jquery.dataTables.min.js"
             ]
           },
           "configurations": {
