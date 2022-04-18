@@ -1,1 +1,57 @@
-<p>products works!</p>
+<div class="breadcrumb-header justify-content-between">
+  <div class="my-auto">
+    <div class="d-flex">
+      <h4 class="content-title mb-0 my-auto">Products</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">Create new Product</span>
+      <a routerLink="products/edit/1">Edit</a>
+    </div>
+  </div>
+</div>
+<div *ngIf="dataSource">
+  <div class="row row-sm">
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header pb-0">
+          <div class="d-flex justify-content-between">
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-striped mg-b-0 text-md-nowrap">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Image</th>
+                  <th>Description</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th>Discount</th>
+                  <th>Available</th>
+                  <th>Category</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of dataSource">
+                  <td>{{product.id}}</td>
+                  <td>{{product.name}}</td>
+                  <td><img [src]="product.image" alt="" width="100px"></td>
+                  <td>{{product.description}}</td>
+                  <td>{{product.quantity}}</td>
+                  <td>{{product.price}}</td>
+                  <td>{{product.discount}}</td>
+                  <td>{{product.available}}</td>
+                  <td>{{product.category.name}}</td>
+                  <td><a routerLink="edit/1" class="btn btn-dark">Edit</a></td>
+                  <td><button class="btn btn-dark">Delete</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- bd -->
+        </div><!-- bd -->
+      </div><!-- bd -->
+    </div>
+  </div>
+</div>
+
