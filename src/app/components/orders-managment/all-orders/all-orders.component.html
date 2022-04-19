@@ -1,1 +1,22 @@
-<p>all-orders works!</p>
+<div class="container pt-5">
+    <ngx-datatable
+    class="bootstrap fullscreen"
+    [rows]="rows"
+    [columns]="[{ name: 'name' }, { name: 'description' }, { name: 'quantity' }, { name: 'price' }]"
+    [columnMode]="ColumnMode.force"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    rowHeight="auto"
+    [externalPaging]="true"
+    [count]="page.totalElements"
+    [offset]="page.pageNumber"
+    [limit]="page.size"
+    (page)="setPage($event)"
+    >
+        <ngx-datatable-column name="Name" [width]="300"></ngx-datatable-column>
+        <ngx-datatable-column name="description"></ngx-datatable-column>
+        <ngx-datatable-column name="Age"></ngx-datatable-column>
+        <ngx-datatable-column name="quantity" [width]="300" prop="address.city"></ngx-datatable-column>
+        <ngx-datatable-column name="price" [width]="300" prop="address.state"></ngx-datatable-column>
+    </ngx-datatable>
+  </div>
