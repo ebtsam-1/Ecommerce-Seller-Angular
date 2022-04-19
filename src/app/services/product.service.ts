@@ -27,11 +27,19 @@ export class ProductService {
    }
 
    productCreation(data:object):Observable<any>{
-    return this.httpClient.post<any>(`${environment.apiURL}/seller/products`,JSON.stringify(data),this.httpOptions)
+    return this.httpClient.post<any>(`${environment.apiURL}/seller/products`,data,this.httpOptions);
    }
 
    products():Observable<any>{
-    return this.httpClient.get<any>(`${environment.apiURL}/seller/products`,this.httpOptions)
+    return this.httpClient.get<any>(`${environment.apiURL}/seller/products`,this.httpOptions);
    }
 
-}
+   productDetails(ID:number):Observable<any>{
+    return this.httpClient.get<any>(`${environment.apiURL}/seller/products/${ID}`,this.httpOptions);
+   }
+
+   productUpdate(id:number, data:object):Observable<any>
+{
+  return this.httpClient.put<any>(`${environment.apiURL}/seller/products/${id}`,JSON.stringify(data),this.httpOptions);
+
+}}
