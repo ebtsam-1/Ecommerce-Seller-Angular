@@ -68,21 +68,16 @@ export class CreateProductComponent implements OnInit {
     }
   }
 
-
   create() {
 
-    let prodModel = {
-      name: this.prodCreatForm.value.name,
-      category_id: this.prodCreatForm.value.category_id,
-      description: this.prodCreatForm.value.description,
-      quantity: this.prodCreatForm.value.quantity,
-      price: this.prodCreatForm.value.price,
-      discount: this.prodCreatForm.value.discount,
-    }
+       this.formData.append('name', this.name?.value);
+       this.formData.append('description', this.description?.value);
+        this.formData.append('category_id', this.category?.value);
+        this.formData.append('quantity',this.quantity?.value);
+        this.formData.append('discount',this.discount?.value);
+        this.formData.append('price',this.price?.value);
 
-    console.log(JSON.stringify(prodModel));
-
-    this.productService.productCreation(prodModel).subscribe(
+       this.productService.productCreation(this.formData).subscribe(
       data => {
         console.log(data)
         // let userToken = data.data.token;
