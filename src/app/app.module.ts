@@ -23,9 +23,7 @@ import { AllOrdersComponent } from './components/orders-managment/all-orders/all
 import { SignupComponent } from './components/auth/login/signup/signup.component';
 import { FilesModule } from './shared/files/files.module';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
-
-
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +51,7 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FilesModule
+    FilesModule,
   ],
   providers: [
     {
@@ -65,8 +63,8 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
       // provide:HTTP_INTERCEPTORS,
       // useClass:LoaderInterceptorService,
       // multi:true
- //   }
-
+ //   },
+    NgxDatatableModule
   ],
   bootstrap: [AppComponent]
 })
