@@ -20,7 +20,7 @@ import { PickedOrdersComponent } from './components/orders-managment/picked-orde
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
 import { AllOrdersComponent } from './components/orders-managment/all-orders/all-orders.component';
-
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
@@ -48,6 +48,7 @@ import { AllOrdersComponent } from './components/orders-managment/all-orders/all
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxDatatableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
