@@ -11,12 +11,15 @@ import {CreateProductComponent} from './components/products-managment/create-pro
 import {EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
 import {ProductsComponent} from './components/products-managment/products/products.component';
 import {AllOrdersComponent} from "./components/orders-managment/all-orders/all-orders.component";
+import { SignupComponent } from './components/auth/login/signup/signup.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
     path: '', component: MainLayoutComponent, children: [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: HomeComponent},
+      {path: 'profile', component: ProfileComponent},
 
       {path: 'orders', component: AllOrdersComponent},
       {path: 'orders/requests', component: RequestedOrdersComponent},
@@ -28,21 +31,10 @@ const routes: Routes = [
       {path: 'products', component: ProductsComponent},
       {path: 'products/create', component: CreateProductComponent},
       {path: 'products/edit/:id', component: EditProductComponent },
-
-
-      // {
-      //   path: 'user',
-      //   loadChildren: () => import('src/app/modules/user/user.module').then(m => m.UserModule)
-      // },
-      //
-      // { path: 'login/:error', component: LoginComponent },
-      // { path: 'register', component: RegisterComponent },
-      // { path: 'register/:error', component: RegisterComponent },
-      // { path: 'product/:ID', component: ProductDetailsComponent },
-
     ]
   },
   {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
   // { path: '**', component: NotFoundComponent }
 ];
 

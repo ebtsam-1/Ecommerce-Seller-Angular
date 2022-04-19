@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,10 @@ import { PickedOrdersComponent } from './components/orders-managment/picked-orde
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
 import { AllOrdersComponent } from './components/orders-managment/all-orders/all-orders.component';
+import { SignupComponent } from './components/auth/login/signup/signup.component';
+import { FilesModule } from './shared/files/files.module';
+import { TokenInterceptorService } from './interceptors/token-interceptor.service';
+
 
 
 @NgModule({
@@ -39,6 +43,7 @@ import { AllOrdersComponent } from './components/orders-managment/all-orders/all
     PickedOrdersComponent,
     EditProductComponent,
     AllOrdersComponent,
+    SignupComponent,
 
   ],
   imports: [
@@ -48,8 +53,21 @@ import { AllOrdersComponent } from './components/orders-managment/all-orders/all
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FilesModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    },
+  //  {
+      // provide:HTTP_INTERCEPTORS,
+      // useClass:LoaderInterceptorService,
+      // multi:true
+ //   }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
