@@ -27,6 +27,9 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
 import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
 import { LoaderComponent } from './components/loader/loader.component';
 import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
+import { AvailableComponent } from './components/products-managment/available/available.component';
+import { UnavailableComponent } from './components/products-managment/unavailable/unavailable.component';
+import { ZeroStockComponent } from './components/products-managment/zero-stock/zero-stock.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { ErrorInterceptorService } from './interceptors/error-interceptor.servic
     AllOrdersComponent,
     LoaderComponent,
     SignupComponent,
+    AvailableComponent,
+    UnavailableComponent,
+    ZeroStockComponent,
 
   ],
   imports: [

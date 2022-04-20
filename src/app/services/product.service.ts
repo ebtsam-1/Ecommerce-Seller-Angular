@@ -26,6 +26,18 @@ export class ProductService {
     return this.httpClient.get<any>(`${environment.apiSellerURL}/products`);
   }
 
+  availableProducts(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiSellerURL}/products/available`);
+  }
+
+  unavailableProducts(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiSellerURL}/products/unavailable`);
+  }
+
+  zeroStockProducts(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiSellerURL}/products/zero-stock`);
+  }
+
   productDetails(ID: number): Observable<any> {
     return this.httpClient.get<any>(`${environment.apiSellerURL}/products/${ID}`);
   }
