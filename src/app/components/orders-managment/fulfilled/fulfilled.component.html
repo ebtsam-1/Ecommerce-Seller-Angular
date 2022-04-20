@@ -1,1 +1,54 @@
-<p>fulfilled works!</p>
+<div class="breadcrumb-header justify-content-between">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item text-capitalize font-weight-bolder">Payments</li>
+      <li class="breadcrumb-item text-capitalize active font-weight-bold" aria-current="page">fulfilled</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container">
+  <ngx-datatable
+    class="bootstrap fullscreen"
+    [rows]="rows"
+    [columnMode]="ColumnMode.force"
+    [headerHeight]="70"
+    [footerHeight]="50"
+    rowHeight="auto"
+    [externalPaging]="true"
+    [count]="page.totalElements"
+    [offset]="page.pageNumber"
+    [limit]="page.size"
+    (page)="setPage($event)"
+
+  >
+    <ngx-datatable-column name="Product Name" prop="name">
+      <ng-template let-value="value" ngx-datatable-cell-template>
+        <strong>{{value}}</strong>
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Requested Quantity">
+      <ng-template let-quantity="row.quantity" ngx-datatable-cell-template><strong>{{quantity}}</strong></ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Unit price" prop="price"></ngx-datatable-column>
+    <ngx-datatable-column name="Discount">
+      <ng-template let-discount="value" ngx-datatable-cell-template>{{discount * 100}}%</ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Sale price">
+      <ng-template let-value="row.sale_price" ngx-datatable-cell-template>{{value.toFixed(2)}}</ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>Total Price</ng-template>
+      <ng-template let-total="row.total" ngx-datatable-cell-template>{{total.toFixed()}}</ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column>
+      <ng-template ngx-datatable-header-template>Fulfilled</ng-template>
+      <ng-template ngx-datatable-cell-template>
+        <div><span class="badge badge-success">fulfilled</span></div>
+      </ng-template>
+    </ngx-datatable-column>
+
+
+  </ngx-datatable>
+</div>
