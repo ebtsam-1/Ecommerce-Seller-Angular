@@ -1,1 +1,69 @@
-<p>available works!</p>
+<div class="breadcrumb-header justify-content-between">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item text-capitalize font-weight-bolder">Products</li>
+      <li class="breadcrumb-item text-capitalize active font-weight-bold" aria-current="page">Available</li>
+    </ol>
+  </nav>
+</div>
+
+<div *ngIf="products" class="container">
+  <table class="table table-bordered table-hover mb-0 text-nowrap">
+    <thead>
+    <tr>
+      <th class="text-center text-uppercase">Product</th>
+      <th class="text-center text-uppercase">Quantity</th>
+      <th class="text-center text-uppercase">original price</th>
+      <th class="text-center text-uppercase">discount</th>
+      <th class="text-center text-uppercase">sale price</th>
+      <th class="text-center text-uppercase">items sold</th>
+      <th class="text-center text-uppercase">Control</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <ng-container
+      *ngFor="let product of products| paginate: {itemsPerPage: itemsPerPage,currentPage: page,totalItems: totalItems}">
+      <tr>
+        <td>
+          <div class="media">
+            <div><img src="{{imageURL}}/products/{{product.image}}" alt="img">
+            </div>
+            <div class="media-body">
+              <div class="card-item-desc mt-0">
+                <h6 class="font-weight-bold mt-0 text-uppercase">{{product.name}}</h6>
+                <dl class="card-item-desc-1">
+                  <dt>Category:</dt>
+                  <dd>{{product.category.name}}</dd>
+                </dl>
+                <dl class="card-item-desc-1">
+                  <dt>Description:</dt>
+                  <dd>{{product.description | slice:0:60}}..</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td class="text-center text-lg text-medium">{{product.quantity}}</td>
+        <td class="text-center text-lg text-medium">{{product.price}} EGP</td>
+        <td class="text-center text-lg text-medium">{{product.discount * 100}}%</td>
+        <td class="text-center text-lg text-medium">{{(product.salePrice).toFixed(2)}} EGP</td>
+        <td class="text-center text-lg text-medium">{{product.soldCount}}</td>
+        <td class="text-center text-lg text-medium">
+          <a routerLink="/products/edit/{{product.id}}" data-toggle="tooltip" title="" data-original-title="Edit item"><i class="fa fa-edit"></i></a>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+
+
+<!--suppress HtmlUnknownTag -->
+<pagination-controls
+  class="pagination mt-3"
+  (pageChange)="getPage(page = $event)"
+></pagination-controls>
+</div>
+<div *ngIf="!!products==false" class="contatiner"><h4 class="text-gray">Nothing here</h4></div>
+
+

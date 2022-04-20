@@ -14,6 +14,9 @@ import {AllOrdersComponent} from "./components/orders-managment/all-orders/all-o
 import { AuthGuard } from './guards/auth.guard';
 import { SignupComponent } from './components/auth/login/signup/signup.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import {AvailableComponent} from "./components/products-managment/available/available.component";
+import {UnavailableComponent} from "./components/products-managment/unavailable/unavailable.component";
+import {ZeroStockComponent} from "./components/products-managment/zero-stock/zero-stock.component";
 
 const routes: Routes = [
   {
@@ -32,6 +35,9 @@ const routes: Routes = [
       {path: 'products', component: ProductsComponent},
       {path: 'products/create', component: CreateProductComponent},
       {path: 'products/edit/:id', component: EditProductComponent },
+      {path: 'products/available', component: AvailableComponent},
+      {path: 'products/unavailable', component: UnavailableComponent},
+      {path: 'products/zero-stock', component: ZeroStockComponent},
     ]
   },
   {path: 'login', component: LoginComponent},
