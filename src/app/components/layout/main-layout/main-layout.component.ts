@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-main-layout',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainLayoutComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private loader:LoaderService) { }
+  loaderState=false
   ngOnInit(): void {
+    this.loader.loaderState.subscribe(res=>{
+      this.loaderState=res
+    })
   }
 
 }

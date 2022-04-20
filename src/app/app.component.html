@@ -1,1 +1,6 @@
+<!-- <app-loader *ngIf="loaderState"></app-loader> -->
+
+<div id="global-loader" style="opacity: 0.7;" *ngIf="loaderState">
+    <img src="assets/img/loader.svg" class="loader-img" alt="Loader">
+</div>
 <router-outlet></router-outlet>

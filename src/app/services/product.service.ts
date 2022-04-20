@@ -10,36 +10,29 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  private httpOptions = {};
+  
   constructor(private httpClient:HttpClient
-  ) {
-    this.httpOptions =  {headers: new HttpHeaders({
-      // 'Content-Type': 'application/json',
-      'Accept':'application/json'
-       ,'Authorization': `Bearer ${localStorage.getItem('userToken')}`
-      })};
-
-   }
+  ) {}
 
    CategoryAll(): Observable<any>{
-     return this.httpClient.get(`${environment.apiURL}/category`, this.httpOptions);
+     return this.httpClient.get(`${environment.apiURL}/category`);
 
    }
 
    productCreation(data:object):Observable<any>{
-    return this.httpClient.post<any>(`${environment.apiURL}/seller/products`,data,this.httpOptions);
+    return this.httpClient.post<any>(`${environment.apiURL}/seller/products`,data);
    }
 
    products():Observable<any>{
-    return this.httpClient.get<any>(`${environment.apiURL}/seller/products`,this.httpOptions);
+    return this.httpClient.get<any>(`${environment.apiURL}/seller/products`);
    }
 
    productDetails(ID:number):Observable<any>{
-    return this.httpClient.get<any>(`${environment.apiURL}/seller/products/${ID}`,this.httpOptions);
+    return this.httpClient.get<any>(`${environment.apiURL}/seller/products/${ID}`);
    }
 
    productUpdate(id:number, data:object):Observable<any>
 {
-  return this.httpClient.put<any>(`${environment.apiURL}/seller/products/${id}`,JSON.stringify(data),this.httpOptions);
+  return this.httpClient.put<any>(`${environment.apiURL}/seller/products/${id}`,JSON.stringify(data));
 
 }}

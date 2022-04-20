@@ -11,6 +11,7 @@ import {CreateProductComponent} from './components/products-managment/create-pro
 import {EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
 import {ProductsComponent} from './components/products-managment/products/products.component';
 import {AllOrdersComponent} from "./components/orders-managment/all-orders/all-orders.component";
+import { AuthGuard } from './guards/auth.guard';
 import { SignupComponent } from './components/auth/login/signup/signup.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
@@ -21,7 +22,7 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent},
       {path: 'profile', component: ProfileComponent},
 
-      {path: 'orders', component: AllOrdersComponent},
+      {path: 'orders', component: AllOrdersComponent,canActivate:[AuthGuard]},
       {path: 'orders/requests', component: RequestedOrdersComponent},
       {path: 'orders/picked', component: PickedOrdersComponent},
 

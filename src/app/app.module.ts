@@ -24,6 +24,11 @@ import { SignupComponent } from './components/auth/login/signup/signup.component
 import { FilesModule } from './shared/files/files.module';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { TokenInterceptorService } from './interceptors/token-interceptor.service';
+import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
+import { LoaderComponent } from './components/loader/loader.component';
+import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +46,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     PickedOrdersComponent,
     EditProductComponent,
     AllOrdersComponent,
+    LoaderComponent,
     SignupComponent,
 
   ],
@@ -52,6 +58,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     HttpClientModule,
     BrowserAnimationsModule,
     FilesModule,
+    NgxDatatableModule
   ],
   providers: [
     {
@@ -59,12 +66,16 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
       useClass:TokenInterceptorService,
       multi:true
     },
-  //  {
-      // provide:HTTP_INTERCEPTORS,
-      // useClass:LoaderInterceptorService,
-      // multi:true
- //   },
-    NgxDatatableModule
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:LoaderInterceptorService,
+      multi:true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:ErrorInterceptorService,
+      multi:true
+    }
   ],
   bootstrap: [AppComponent]
 })

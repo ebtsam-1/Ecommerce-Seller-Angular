@@ -10,36 +10,30 @@ import {environment} from 'src/environments/environment';
 })
 export class OrderService {
 
-  private readonly httpOptions;
+  
 
   constructor(private httpClient: HttpClient) {
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json', 'Accept': ' application/json'
-        ,'Authorization': `Bearer ${localStorage.getItem('userToken')}`
-      })
-    };
+    
+    
   }
 
   picked(page: number = 1): Observable<any> {
-    return this.httpClient.get(`${environment.apiURL}/orders/picked?page=${page}`, this.httpOptions)
+    return this.httpClient.get(`${environment.apiURL}/orders/picked?page=${page}`)
   }
 
   pending(page: number = 1): Observable<any> {
-    return this.httpClient.get(`${environment.apiURL}/orders/pending?page=${page}`, this.httpOptions)
+    return this.httpClient.get(`${environment.apiURL}/orders/pending?page=${page}`)
   }
 
   allOrders(page: number = 1): Observable<any> {
-    return this.httpClient.get(`${environment.apiURL}/orders?page=${page}`, this.httpOptions)
+    return this.httpClient.get(`${environment.apiURL}/orders?page=${page}`)
   }
 
   fulfilled(page: number = 1): Observable<any> {
-    return this.httpClient.get(`${environment.apiURL}/payments/fulfilled?page=${page}`, this.httpOptions)
+    return this.httpClient.get(`${environment.apiURL}/payments/fulfilled?page=${page}`)
   }
 
   unfulfilled(page: number = 1): Observable<any> {
-    return this.httpClient.get(`${environment.apiURL}/payments/unfulfilled?page=${page}`, this.httpOptions)
+    return this.httpClient.get(`${environment.apiURL}/payments/unfulfilled?page=${page}`)
   }
-
-
 }

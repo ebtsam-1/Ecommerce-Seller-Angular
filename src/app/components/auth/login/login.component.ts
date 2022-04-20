@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     this.loginFormGroup = this.fb.group({
       email: ['',[Validators.required,Validators.minLength(3)]],
       password:[''],
-
     })
   }
   ngOnInit(): void {
@@ -38,21 +37,22 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    // this.AuthService.login(this.loginFormGroup.value).subscribe(
-    //      data =>{
-    //     console.log(data)
-    //     let userToken = data.data.token;
-    //     localStorage.setItem('userToken',userToken);
-    //     this.router.navigate(['home',data.data.name]);
-    //   },
-    //   error =>{
-    //     this.router.navigate(['login','Invalid Email or Password']);
-    //   });
+    this.AuthService.login(this.loginFormGroup.value).subscribe(
+      (data:any) =>{
+        console.log(data)
+       localStorage.setItem('salerToken',data.data.token);
+       this.AuthService.role=data.data.role[0]
+      this.router.navigate(['home']);
+   },
+   error =>{
+     // this.router.navigate(['login','Invalid Email or Password']);
+    //  this.toast.error('Invalid Email or Password');
+     console.log(error)
+   });
   }
 
   logout(){
-    // this.AuthService.logout();
-    // localStorage.removeItem('userToken');
+    this.AuthService.logout();
   }
 
 }
