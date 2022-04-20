@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.AuthService.login(this.loginFormGroup.value).subscribe(
       (data:any) =>{
         console.log(data)
-       localStorage.setItem('salerToken',data.data.token);
+       localStorage.setItem('sellerToken',data.data.token);
        this.AuthService.role=data.data.role[0]
       this.router.navigate(['home']);
    },

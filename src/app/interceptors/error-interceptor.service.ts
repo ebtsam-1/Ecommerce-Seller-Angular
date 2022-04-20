@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, retry, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
@@ -16,12 +16,12 @@ export class ErrorInterceptorService implements HttpInterceptor {
       catchError((err:HttpErrorResponse)=>{
         if(err.status==401||err.status==403)
         {
-          localStorage.removeItem('salerToken')
+          localStorage.removeItem('sellerToken')
           router.navigate(['login'])
         }
         return throwError(
           ()=>new Error(err.message))
         })
-    )  
+    )
   }
 }

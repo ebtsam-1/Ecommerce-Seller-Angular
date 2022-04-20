@@ -10,9 +10,9 @@ import { AuthService } from '../services/auth.service';
 
 export class TokenInterceptorService {
 
-  constructor(private injctor:Injector) { }
+  constructor(private injector:Injector) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let auth=this.injctor.get(AuthService)
+    let auth=this.injector.get(AuthService)
     console.log(req.url);
     if(req.url == 'http://localhost:8000/api/signup')
     {

@@ -22,7 +22,6 @@ import { EditProductComponent } from './components/products-managment/edit-produ
 import { AllOrdersComponent } from './components/orders-managment/all-orders/all-orders.component';
 import { SignupComponent } from './components/auth/login/signup/signup.component';
 import { FilesModule } from './shared/files/files.module';
-import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
