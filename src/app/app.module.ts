@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
 import { AllOrdersComponent } from './components/orders-managment/all-orders/all-orders.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { TokenInterceptorService } from './interceptors/token-interceptor.service';
+import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
+import { LoaderComponent } from './components/loader/loader.component';
+import { ErrorInterceptorService } from './interceptors/error-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     PickedOrdersComponent,
     EditProductComponent,
     AllOrdersComponent,
+    LoaderComponent,
 
   ],
   imports: [
@@ -50,7 +55,23 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     BrowserAnimationsModule,
     NgxDatatableModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptorService,
+      multi:true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:LoaderInterceptorService,
+      multi:true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:ErrorInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

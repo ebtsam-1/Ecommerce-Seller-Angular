@@ -11,6 +11,7 @@ import {CreateProductComponent} from './components/products-managment/create-pro
 import {EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
 import {ProductsComponent} from './components/products-managment/products/products.component';
 import {AllOrdersComponent} from "./components/orders-managment/all-orders/all-orders.component";
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: HomeComponent},
 
-      {path: 'orders', component: AllOrdersComponent},
+      {path: 'orders', component: AllOrdersComponent,canActivate:[AuthGuard]},
       {path: 'orders/requests', component: RequestedOrdersComponent},
       {path: 'orders/picked', component: PickedOrdersComponent},
 
