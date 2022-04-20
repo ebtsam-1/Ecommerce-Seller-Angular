@@ -20,6 +20,9 @@ import { PickedOrdersComponent } from './components/orders-managment/picked-orde
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
 import { AllOrdersComponent } from './components/orders-managment/all-orders/all-orders.component';
+import { SignupComponent } from './components/auth/login/signup/signup.component';
+import { FilesModule } from './shared/files/files.module';
+import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 import { LoaderInterceptorService } from './interceptors/loader-interceptor.service';
@@ -44,6 +47,7 @@ import { ErrorInterceptorService } from './interceptors/error-interceptor.servic
     EditProductComponent,
     AllOrdersComponent,
     LoaderComponent,
+    SignupComponent,
 
   ],
   imports: [
@@ -53,6 +57,7 @@ import { ErrorInterceptorService } from './interceptors/error-interceptor.servic
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FilesModule,
     NgxDatatableModule
   ],
   providers: [

@@ -1,6 +1,12 @@
-import { HttpClient } from '@angular/common/http';
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {environment} from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { City } from '../models/city';
+import { Governate } from '../models/governate';
+import { User } from '../models/user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +14,7 @@ import {environment} from 'src/environments/environment';
 export class AuthService {
   public role:string=''
   constructor(private http:HttpClient) { }
+
 
   login(data:any)
   {
@@ -35,4 +42,25 @@ export class AuthService {
   {
     return localStorage.getItem('salerToken')?localStorage.getItem('salerToken'):false
   }
+  
+  register(data:object):Observable<any>{
+    return this.httpClient.post(`${environment.apiURL}/register`,data,this.httpOptions)
+   }
+
+   myProfile():Observable<any>{
+    return this.httpClient.get<User>(`${environment.apiURL}/myProfile`)
+   }
+
+   cities(cityID:number):Observable<City[]>{
+    return this.httpClient.get<City[]>(`${environment.apiURL}/governorate/${cityID}`)
+   }
+
+   governates():Observable<Governate[]>{
+    return this.httpClient.get<Governate[]>(`${environment.apiURL}/governorate`)
+   }
+
+   editProfile(data:object):Observable<any>{
+    return this.httpClient.post(`${environment.apiURL}/editprofile`,JSON.stringify(data))
+   }
+
 }
