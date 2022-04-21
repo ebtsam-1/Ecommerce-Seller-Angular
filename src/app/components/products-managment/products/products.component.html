@@ -1,11 +1,60 @@
-<div class="breadcrumb-header justify-content-between">
-  <div class="my-auto">
-    <div class="d-flex">
-      <h4 class="content-title mb-0 my-auto">Products</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">Create new Product</span>
-      <a routerLink="products/edit/1">Edit</a>
+
+<!-- Modal -->
+<div class="modal effect-just-me show" id="modaldemo8" [hidden]="modalFlag" style="padding-right: 4px;" aria-modal="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content modal-content-demo">
+      <div class="modal-header">
+        <h6 class="modal-title">Modal Header</h6><button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <h6>Modal Body</h6>
+        <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn ripple btn-primary" type="button">Save changes</button>
+        <button class="btn ripple btn-secondary" data-dismiss="modal" type="button">Close</button>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- Modal End -->
+
+<div class="breadcrumb-header justify-content-between">
+  <div class="my-auto">
+    <div class="d-flex">
+      <h4 class="content-title mb-0 my-auto">Products</h4><span class="text-muted mt-1 tx-13 ml-2 mb-0">Create new
+        Product</span>
+    </div>
+  </div>
+</div>
+
+<!-- messages -->
+<div   *ngIf="message == 'Deleted Successfully'"
+class="alert alert-info" role="alert">
+  <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+    <span aria-hidden="true">×</span>
+  </button>
+  <strong>Heads up!</strong> Product  has been deleted Successfully!
+</div>
+
+<div   *ngIf="message == 'Successfully updated'"
+class="alert alert-info" role="alert">
+  <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+    <span aria-hidden="true">×</span>
+  </button>
+  <strong>Heads up!</strong> Product  has been updated Successfully!
+</div>
+
+<div    *ngIf="message == 'Failed to update the product'"
+class="alert alert-danger mg-b-0" role="alert">
+  <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+    <span aria-hidden="true">×</span>
+  </button>
+  <strong>Oh snap!</strong> Failed to update the product!
+</div>
+<!-- messages end -->
+<br>
 <div *ngIf="dataSource">
   <div class="row row-sm">
     <div class="col-xl-12">
@@ -16,7 +65,7 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-striped mg-b-0 text-md-nowrap">
+            <table class="table table-striped mg-b-0 text-md-nowrap text-center">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -33,25 +82,44 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let product of dataSource">
+                <ng-container
+                *ngFor="let product of dataSource| paginate: {itemsPerPage: itemsPerPage,currentPage: page,totalItems: totalItems}">
+                <tr >
                   <td>{{product.id}}</td>
                   <td>{{product.name}}</td>
                   <td><img [src]="product.image" alt="" width="100px"></td>
-                  <td>{{product.description}}</td>
+                  <td>
+                    <p style="font-size: 0.7em;">{{product.description}}</p>
+                  </td>
                   <td>{{product.quantity}}</td>
                   <td>{{product.price}}</td>
                   <td>{{product.discount}}</td>
                   <td>{{product.available}}</td>
                   <td>{{product.category.name}}</td>
                   <td><a routerLink="edit/{{product.id}}" class="btn btn-dark">Edit</a></td>
-                  <td><button class="btn btn-dark">Delete</button></td>
+                  <td style="display: flex; justify-content: center; align-items: center;">
+                    <button  class="remove-from-cart" style="background: none; border: none;"
+                     (click)="deleteProduct(product.id)"
+                       data-toggle="tooltip" title="" data-original-title="Remove item">
+                       <i class="fa fa-trash"></i>
+                      </button>
+                      </td>
                 </tr>
+              </ng-container>
               </tbody>
             </table>
-          </div><!-- bd -->
+
+            <!-- suppress HtmlUnknownTag -->
+            <pagination-controls
+            class="pagination mt-3"
+            (pageChange)="getPage(page = $event)"></pagination-controls>
+          </div>
+          <div *ngIf="!!dataSource==false" class="contatiner">
+            <h4 class="text-gray">Nothing here</h4>
+          </div>
+
         </div><!-- bd -->
       </div><!-- bd -->
-    </div>
+    </div><!-- bd -->
   </div>
 </div>
-

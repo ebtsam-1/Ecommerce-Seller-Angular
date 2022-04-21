@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {City} from 'src/app/models/city';
-import {Governate} from 'src/app/models/governate';
-import {User} from 'src/app/models/user';
-import {AuthService} from 'src/app/services/auth.service';
-import {environment} from "../../../environments/environment";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { City } from 'src/app/models/city';
+import { Governate } from 'src/app/models/governate';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +15,6 @@ import {environment} from "../../../environments/environment";
 export class ProfileComponent implements OnInit {
   imageURL = environment.images
 
-  // profileData:User[] = []
   user: User = {} as User;
 
   EditUsrForm: FormGroup;
@@ -56,10 +55,11 @@ export class ProfileComponent implements OnInit {
         name: ele.data.name,
         email: ele.data.email,
         phone: ele.data.phone,
-        city: 2,
-        governate: 2,
-        address: ele.data.address,
-      });
+        city: ele.data.city.id,
+        governate: ele.data.city.governorate_id,
+        address:ele.data.address,
+       });
+
 
       console.log(this.EditUsrForm.value)
     }, err => {

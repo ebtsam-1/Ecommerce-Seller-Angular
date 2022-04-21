@@ -22,8 +22,8 @@ export class ProductService {
     return this.httpClient.post<any>(`${environment.apiSellerURL}/products`, data);
   }
 
-  products(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.apiSellerURL}/products`);
+  products(page:number = 1): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiSellerURL}/products?page=${page}`);
   }
 
   availableProducts(page:number = 1): Observable<any> {
@@ -45,5 +45,9 @@ export class ProductService {
   productUpdate(id: number, data: object): Observable<any> {
     return this.httpClient.put<any>(`${environment.apiSellerURL}/products/${id}`, JSON.stringify(data));
 
+  }
+
+  productDelete(ID: number): Observable<any> {
+    return this.httpClient.delete<any>(`${environment.apiSellerURL}/products/${ID}`);
   }
 }

@@ -3,10 +3,11 @@ export interface User {
   email: string,
   phone: string,
   address: string,
-  location: {
-    "city": string,
-    "governorate": string,
-    "address": string
+  "city": {
+    "id": number,
+    "governorate_id": number,
+    "name": string,
+    "governorate_name": string
 }
 avatar:string
 }

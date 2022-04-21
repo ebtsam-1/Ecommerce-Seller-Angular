@@ -14,7 +14,7 @@ export class TokenInterceptorService {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let auth=this.injector.get(AuthService)
     console.log(req.url);
-    if(req.url == 'http://localhost:8000/api/signup')
+    if(req.url == 'http://localhost:8000/api/signup' || req.url == 'http://localhost:8000/api/seller/products')
     {
       let token=req.clone({
         setHeaders:{

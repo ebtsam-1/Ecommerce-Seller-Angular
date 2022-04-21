@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FileUploader } from 'ng2-file-upload';
 import { Category } from 'src/app/models/category';
 import { ProductService } from 'src/app/services/product.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-edit-product',
@@ -11,8 +13,9 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class EditProductComponent implements OnInit {
 
+  imageURL = environment.images
   prodID : number = 0;
-
+  public  uploader : FileUploader = new FileUploader({});
   formData: FormData = new FormData()
   selectedFile: string | null = null;
 
@@ -30,6 +33,7 @@ export class EditProductComponent implements OnInit {
       quantity: ['', [Validators.required]],
       price: ['', [Validators.required]],
       discount: ['', [Validators.required]],
+      image: [''],
     });
   }
 
@@ -51,6 +55,7 @@ export class EditProductComponent implements OnInit {
          quantity:ele.data.quantity,
          price:ele.data.price,
          discount:ele.data.discount,
+         image:ele.data.image,
         });
 
         console.log(this.prodCreatForm.value)
@@ -74,8 +79,12 @@ export class EditProductComponent implements OnInit {
   get price() {
     return this.prodCreatForm.get('price');
   }
-  get discount() {
+get discount() {
     return this.prodCreatForm.get('discount');
+  }
+
+  get image() {
+    return this.prodCreatForm.get('image');
   }
 
   onFileSelect(event: any) {
@@ -90,33 +99,30 @@ export class EditProductComponent implements OnInit {
 
   update() {
 
-      //  this.formData.set('name', this.name?.value);
-      //   this.formData.set('description', this.description?.value);
-      //   this.formData.set('category_id', this.category?.value);
-      //   this.formData.set('quantity',this.quantity?.value);
-      //   this.formData.set('discount',this.discount?.value);
-      //   this.formData.set('price',this.price?.value);
-      //  console.log(this.name?.value);
+       this.formData.set('name', this.name?.value);
+        this.formData.set('description', this.description?.value);
+        this.formData.set('category_id', this.category?.value);
+        this.formData.set('quantity',this.quantity?.value);
+        this.formData.set('discount',this.discount?.value);
+        this.formData.set('price',this.price?.value);
+       console.log(this.name?.value);
 
-      let productModel = {
-        name: this.prodCreatForm.value.name,
-        description: this.prodCreatForm.value.description,
-        category_id: this.prodCreatForm.value.category_id,
-        quantity: this.prodCreatForm.value.quantity,
-        price: this.prodCreatForm.value.price,
-        discount: this.prodCreatForm.value.discount,
-       }
+      // let productModel = {
+      //   name: this.prodCreatForm.value.name,
+      //   description: this.prodCreatForm.value.description,
+      //   category_id: this.prodCreatForm.value.category_id,
+      //   quantity: this.prodCreatForm.value.quantity,
+      //   price: this.prodCreatForm.value.price,
+      //   discount: this.prodCreatForm.value.discount,
+      //  }
 
-       console.log(productModel);
-    this.productService.productUpdate(this.prodID, productModel).subscribe(
+    this.productService.productUpdate(this.prodID, this.formData).subscribe(
       data => {
         console.log(data)
-        // let userToken = data.data.token;
-        // localStorage.setItem('userToken',userToken);
-        // this.router.navigate(['home',data.data.name]);
+         this.router.navigate(['product', 'Successfully updated'])
       },
       error => {
-        // this.router.navigate(['register',error.error['message']]);
+        this.router.navigate(['product', 'Failed to update the product'])
         console.log(error);
       });
   }
