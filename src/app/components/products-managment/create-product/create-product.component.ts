@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FileUploader } from 'ng2-file-upload';
 import { Category } from 'src/app/models/category';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -10,7 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
-
+  public  uploader : FileUploader = new FileUploader({});
   formData: FormData = new FormData()
   selectedFile: string | null = null;
 
@@ -67,7 +68,6 @@ export class CreateProductComponent implements OnInit {
       console.log(this.formData);
     }
   }
-
   create() {
 
        this.formData.append('name', this.name?.value);
@@ -80,8 +80,7 @@ export class CreateProductComponent implements OnInit {
        this.productService.productCreation(this.formData).subscribe(
       data => {
         console.log(data)
-        // let userToken = data.data.token;
-        // localStorage.setItem('userToken',userToken);
+
         // this.router.navigate(['home',data.data.name]);
       },
       error => {

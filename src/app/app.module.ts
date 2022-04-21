@@ -20,7 +20,7 @@ import { PickedOrdersComponent } from './components/orders-managment/picked-orde
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditProductComponent } from './components/products-managment/edit-product/edit-product.component';
 import { AllOrdersComponent } from './components/orders-managment/all-orders/all-orders.component';
-import { SignupComponent } from './components/auth/login/signup/signup.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
 import { FilesModule } from './shared/files/files.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
@@ -30,6 +30,7 @@ import { ErrorInterceptorService } from './interceptors/error-interceptor.servic
 import { AvailableComponent } from './components/products-managment/available/available.component';
 import { UnavailableComponent } from './components/products-managment/unavailable/unavailable.component';
 import { ZeroStockComponent } from './components/products-managment/zero-stock/zero-stock.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { ZeroStockComponent } from './components/products-managment/zero-stock/z
     HttpClientModule,
     BrowserAnimationsModule,
     FilesModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    NgxPaginationModule,
   ],
   providers: [
     {

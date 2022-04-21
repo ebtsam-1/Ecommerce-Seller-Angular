@@ -5,6 +5,7 @@ import { City } from 'src/app/models/city';
 import { Governate } from 'src/app/models/governate';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ProfileComponent implements OnInit {
 
   // profileData:User[] = []
-  apiUrl = 'http://localhost:8000';
+  apiUrl = environment.images
    user : User = {} as User;
 
 
@@ -56,8 +57,8 @@ export class ProfileComponent implements OnInit {
         name: ele.data.name,
         email:ele.data.email,
         phone: ele.data.phone,
-        city:2,
-        governate:2,
+        city: ele.data.city.id,
+        governate: ele.data.city.governorate_id,
         address:ele.data.address,
        });
 

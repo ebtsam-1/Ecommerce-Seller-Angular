@@ -12,7 +12,7 @@ import {EditProductComponent } from './components/products-managment/edit-produc
 import {ProductsComponent} from './components/products-managment/products/products.component';
 import {AllOrdersComponent} from "./components/orders-managment/all-orders/all-orders.component";
 import { AuthGuard } from './guards/auth.guard';
-import { SignupComponent } from './components/auth/login/signup/signup.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
@@ -30,6 +30,7 @@ const routes: Routes = [
       {path: 'payments/unfulfilled', component: NotFulfilledComponent},
 
       {path: 'products', component: ProductsComponent},
+      {path: 'product/:message', component: ProductsComponent},
       {path: 'products/create', component: CreateProductComponent},
       {path: 'products/edit/:id', component: EditProductComponent },
     ]
