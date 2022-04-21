@@ -1,23 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import {Product} from "../../../models/product";
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from "../../../services/product.service";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-available',
   templateUrl: './available.component.html',
   styleUrls: ['./available.component.css']
 })
-export class AvailableComponent implements OnInit {
 
-  dataSource : Product[] |null =null;
-  // displayedColumns: string[] = ['id','image','name','price','discount','category_name','description','available'];
-  constructor(private productService:ProductService) { }
+export class AvailableComponent implements OnInit{
 
+  page = 1;
+  products: any;
+  itemsPerPage = 30;
+  totalItems : any;
+  imageURL = environment.images
+
+  constructor(private productService:ProductService) {
+  }
   ngOnInit(): void {
+    this.getPage(this.page);
+  }
 
-    this.productService.availableProducts().subscribe(res=>{
-      this.dataSource = res.data.data
-      console.log(this.dataSource)
+  getPage(page:any) {
+    console.log(page)
+    this.productService.availableProducts(+page).subscribe((res: any) => {
+      this.products =  res.data.data;
+      this.totalItems = res.total;
     })
   }
 
