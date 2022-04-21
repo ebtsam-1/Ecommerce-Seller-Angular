@@ -25,7 +25,8 @@ export class ZeroStockComponent implements OnInit {
     console.log(page)
     this.productService.zeroStockProducts(+page).subscribe((res: any) => {
       this.products =  res.data.data;
-      this.totalItems = res.total;
+      this.totalItems = res.data.total;
+      this.itemsPerPage = res.data.per_page;
     })
   }
 
