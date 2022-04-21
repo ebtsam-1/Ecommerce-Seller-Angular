@@ -26,16 +26,16 @@ export class ProductService {
     return this.httpClient.get<any>(`${environment.apiSellerURL}/products?page=${page}`);
   }
 
-  availableProducts(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.apiSellerURL}/products/available`);
+  availableProducts(page:number = 1): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiSellerURL}/products/available?page=${page}`);
   }
 
-  unavailableProducts(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.apiSellerURL}/products/unavailable`);
+  unavailableProducts(page:number = 1): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiSellerURL}/products/unavailable?page=${page}`);
   }
 
-  zeroStockProducts(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.apiSellerURL}/products/zero-stock`);
+  zeroStockProducts(page:number = 1): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiSellerURL}/products/zero-stock?page=${page}`);
   }
 
   productDetails(ID: number): Observable<any> {
