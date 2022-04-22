@@ -49,6 +49,11 @@ export class ProfileComponent implements OnInit {
       console.log(this.governateID);
     })
 
+    this.authService.cities().subscribe(res => {
+      console.log(res);
+      this.cities = res;
+    })
+
     this.authService.myProfile().subscribe(ele => {
       this.user = ele.data;
       this.EditUsrForm.setValue({
@@ -75,11 +80,11 @@ export class ProfileComponent implements OnInit {
     //  this.governateID = event.target.value
     console.log(this.governateID);
 
-    this.authService.cities(+this.governateID).subscribe(res => {
-      console.log(res);
-      this.cities = res;
+    // this.authService.cities(+this.governateID).subscribe(res => {
+    //   console.log(res);
+    //   this.cities = res;
       // console.log(this.cities)
-    })
+    //})
 
   }
 

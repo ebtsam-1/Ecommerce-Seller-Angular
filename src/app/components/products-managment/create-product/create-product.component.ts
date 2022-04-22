@@ -82,10 +82,11 @@ export class CreateProductComponent implements OnInit {
         console.log(data)
 
         // this.router.navigate(['home',data.data.name]);
+        this.router.navigate(['product', 'Successfully created'])
       },
       error => {
-        // this.router.navigate(['register',error.error['message']]);
-        console.log(error);
+        this.router.navigate(['product', 'Failed to create the product'])
+         console.log(error);
       });
   }
 
