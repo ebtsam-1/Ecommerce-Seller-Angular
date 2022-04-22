@@ -18,7 +18,7 @@ export class AuthService {
 
   login(data:any)
   {
-    return this.http.post(`${environment.apiURL}/login`,data)
+    return this.http.post(`${environment.apiSellerURL}/login`,data)
   }
   logout()
   {
@@ -44,15 +44,15 @@ export class AuthService {
   }
 
   register(data:object):Observable<any>{
-    return this.http.post(`${environment.apiURL}/register`,data)
+    return this.http.post(`${environment.apiSellerURL}/register`,data)
    }
 
    myProfile():Observable<any>{
     return this.http.get<User>(`${environment.apiURL}/myProfile`)
    }
 
-   cities(cityID:number):Observable<City[]>{
-    return this.http.get<City[]>(`${environment.apiURL}/governorate/${cityID}`)
+   cities():Observable<City[]>{
+    return this.http.get<City[]>(`${environment.apiURL}/city`)
    }
 
    governates():Observable<Governate[]>{
@@ -60,7 +60,7 @@ export class AuthService {
    }
 
    editProfile(data:object):Observable<any>{
-    return this.http.post(`${environment.apiURL}/editprofile`,JSON.stringify(data))
+    return this.http.post(`${environment.apiURL}/editprofile`,data)
    }
 
 }

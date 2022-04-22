@@ -2,6 +2,7 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
@@ -14,7 +15,7 @@ export class TokenInterceptorService {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let auth=this.injector.get(AuthService)
     console.log(req.url);
-    if(req.url == 'http://localhost:8000/api/signup' || req.url == 'http://localhost:8000/api/seller/products')
+    if(req.url == `${environment.apiSellerURL}/register` || req.url == `${environment.apiSellerURL}/products` ||  req.url == `${environment.apiURL}/editprofile`)
     {
       let token=req.clone({
         setHeaders:{

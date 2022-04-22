@@ -53,6 +53,22 @@ class="alert alert-danger mg-b-0" role="alert">
   </button>
   <strong>Oh snap!</strong> Failed to update the product!
 </div>
+
+<div   *ngIf="message == 'Successfully created'"
+class="alert alert-info" role="alert">
+  <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+    <span aria-hidden="true">×</span>
+  </button>
+  <strong>Heads up!</strong> Product  has been created Successfully!
+</div>
+
+<div    *ngIf="message == 'Failed to create the product'"
+class="alert alert-danger mg-b-0" role="alert">
+  <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+    <span aria-hidden="true">×</span>
+  </button>
+  <strong>Oh snap!</strong> Failed to create the product!
+</div>
 <!-- messages end -->
 <br>
 <div *ngIf="dataSource">

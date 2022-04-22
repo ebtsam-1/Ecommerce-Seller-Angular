@@ -20,7 +20,8 @@ export class ProductsComponent implements OnInit {
 
   dataSource: any;
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private Router: Router) {
+  constructor(private productService: ProductService,
+    private activatedRoute: ActivatedRoute, private Router: Router) {
 
   }
 
@@ -46,15 +47,18 @@ export class ProductsComponent implements OnInit {
 
   deleteProduct(ID: number) {
     this.modalFlag = true;
-    // if (confirm('Are You Sure!')) {
+    if (confirm('Are You Sure!')) {
     this.productService.productDelete(ID).subscribe(data => {
       console.log('done')
-      this.Router.navigate(['products', 'Deleted Successfully'])
+      // this.Router.navigate(['products', 'Deleted Successfully'])
+      // this.Router.url
+      window.location.reload()
+
     }, err => {
       // this.toast.error('');
       console.log(err);
     })
-    // }
+    }
   }
 
 }

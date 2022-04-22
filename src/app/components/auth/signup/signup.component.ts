@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SignupComponent implements OnInit {
 
+
   public  uploader : FileUploader = new FileUploader({});
   formData : FormData = new FormData()
   selectedFile :string | null= null;
@@ -51,19 +52,24 @@ confirmPassword: ['', [Validators.required]],
       console.log(this.governateID);
 
     })
+
+    this.authService.cities().subscribe(res=>{
+      console.log(res);
+      this.cities = res;
+    })
   }
 
    // Cities importing
    onChange(event:any)
    {
 
-    this.governateID = event.target.value;
-    console.log(this.governateID);
-     this.authService.cities(+this.governateID).subscribe(res=>{
-      console.log(res);
-      this.cities = res;
-      // console.log(this.cities)
-    })
+    // this.governateID = event.target.value;
+    // console.log(this.governateID);
+    //  this.authService.cities(+this.governateID).subscribe(res=>{
+    //   console.log(res);
+    //   this.cities = res;
+    //   // console.log(this.cities)
+   // })
 
    }
      // Errors Handling---------------
@@ -135,7 +141,7 @@ confirmPassword: ['', [Validators.required]],
        this.formData.append('name',this.name?.value);
       this.formData.append('email',this.email?.value);
       this.formData.append('phone',this.phone?.value);
-      this.formData.append('city_id',this.city?.value);
+      this.formData.append('city_id', this.city?.value);
       this.formData.append('address',this.address?.value);
       this.formData.append('password',this.password?.value);
       this.formData.append('password_confirmation',this.confirmPassword?.value);
@@ -151,7 +157,7 @@ confirmPassword: ['', [Validators.required]],
         error =>{
           // this.router.navigate(['register',error.error['message']]);
           // this.toast.error(error.error.message);
-          console.log(error.error.message);
+          console.log(error);
         });
     }
 
