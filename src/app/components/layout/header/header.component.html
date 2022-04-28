@@ -3,11 +3,12 @@
   <div class="container">
     <div class="main-header-left ">
       <a class="animated-arrow hor-toggle horizontal-navtoggle"><span></span></a><!-- sidebar-toggle-->
-      <a class="header-brand" href="index.html">
-        <img src="assets/img/brand/logo-white.png" class="desktop-dark">
+      <a class="header-brand" href="index.html" style="font-size: 2rem;font-weight: 600;">
+        CozaStore
+        <!-- <img src="assets/img/brand/logo-white.png" class="desktop-dark">
         <img src="assets/img/brand/logo.png" class="desktop-logo">
         <img src="assets/img/brand/favicon.png" class="desktop-logo-1">
-        <img src="assets/img/brand/favicon-white.png" class="desktop-logo-dark">
+        <img src="assets/img/brand/favicon-white.png" class="desktop-logo-dark"> -->
       </a>
       <div class="main-header-center  ml-4">
       </div>
@@ -110,7 +111,7 @@
   <div class="sidebar sidebar-right sidebar-animate">
     <div class="panel panel-primary card mb-0 box-shadow">
       <div class="tab-menu-heading border-0 p-3">
-        <div class="card-title mb-0">Notifications</div>
+        <div class="card-title mb-0">Options</div>
         <div class="card-options ml-auto">
           <a href="#" class="sidebar-remove"><i class="fe fe-x"></i></a>
         </div>
@@ -119,12 +120,12 @@
         <div class="tabs-menu ">
           <!-- Tabs -->
           <ul class="nav panel-tabs">
-            <li class=""><a href="#side1" class="active" data-toggle="tab"><i class="ion ion-md-chatboxes tx-18 mr-2"></i> Chat</a></li>
-            <li><a href="#side2" data-toggle="tab"><i class="ion ion-md-notifications tx-18  mr-2"></i> Notifications</a></li>
-            <li><a href="#side3" data-toggle="tab"><i class="ion ion-md-contacts tx-18 mr-2"></i> Friends</a></li>
+            <!-- <li class=""><a href="#side1" class="active" data-toggle="tab"><i class="ion ion-md-chatboxes tx-18 mr-2"></i> Chat</a></li> -->
+            <li><button class="btn btn-dark" style="width: 100%;" (click)="logout()"><i class="bx bx-log-out-circle"></i> Signout</button></li>
+            <!-- <li><a href="#side3" data-toggle="tab"><i class="ion ion-md-contacts tx-18 mr-2"></i> Friends</a></li> -->
           </ul>
         </div>
-        <div class="tab-content">
+        <!-- <div class="tab-content">
           <div class="tab-pane active " id="side1">
             <div class="list d-flex align-items-center border-bottom p-3">
               <div class="">
@@ -502,12 +503,11 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
   <!--/Sidebar-right-->
-
 
 
 

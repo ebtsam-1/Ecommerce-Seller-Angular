@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
 
   EditUsrForm: FormGroup;
   governates: Governate[] = [];
-  cities: City[] = [];
+  cities:City[] = [];
   governateID: number = 0;
 
   constructor(private authService: AuthService,
@@ -45,17 +45,19 @@ export class ProfileComponent implements OnInit {
 
     this.authService.governates().subscribe(res => {
       console.log(res);
-      this.governates = res;
-      console.log(this.governateID);
+      this.governates = res.data;
+      console.log(this.governates);
     })
 
     this.authService.cities().subscribe(res => {
       console.log(res);
-      this.cities = res;
+      this.cities = res.data;
     })
 
     this.authService.myProfile().subscribe(ele => {
       this.user = ele.data;
+      console.log(this.user);
+
       this.EditUsrForm.setValue({
         name: ele.data.name,
         email: ele.data.email,

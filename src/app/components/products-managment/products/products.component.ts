@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import {ProductService} from 'src/app/services/product.service';
 import {environment} from 'src/environments/environment';
+
+
 
 @Component({
   selector: 'app-products',
@@ -21,7 +24,9 @@ export class ProductsComponent implements OnInit {
   dataSource: any;
 
   constructor(private productService: ProductService,
-    private activatedRoute: ActivatedRoute, private Router: Router) {
+    private activatedRoute: ActivatedRoute, private Router: Router,
+   ) {
+
 
   }
 
@@ -46,16 +51,16 @@ export class ProductsComponent implements OnInit {
 
 
   deleteProduct(ID: number) {
-    this.modalFlag = true;
+
     if (confirm('Are You Sure!')) {
     this.productService.productDelete(ID).subscribe(data => {
       console.log('done')
-      // this.Router.navigate(['products', 'Deleted Successfully'])
-      // this.Router.url
-      window.location.reload()
+
+
+
 
     }, err => {
-      // this.toast.error('');
+
       console.log(err);
     })
     }

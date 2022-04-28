@@ -30,13 +30,6 @@
 </div>
 
 <!-- messages -->
-<div   *ngIf="message == 'Deleted Successfully'"
-class="alert alert-info" role="alert">
-  <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-    <span aria-hidden="true">×</span>
-  </button>
-  <strong>Heads up!</strong> Product  has been deleted Successfully!
-</div>
 
 <div   *ngIf="message == 'Successfully updated'"
 class="alert alert-info" role="alert">
@@ -112,7 +105,7 @@ class="alert alert-danger mg-b-0" role="alert">
                   <td>{{product.discount}}</td>
                   <td>{{product.available}}</td>
                   <td>{{product.category.name}}</td>
-                  <td><a routerLink="edit/{{product.id}}" class="btn btn-dark">Edit</a></td>
+                  <td><a routerLink="/edit/{{product.id}}" class="btn btn-dark">Edit</a></td>
                   <td style="display: flex; justify-content: center; align-items: center;">
                     <button  class="remove-from-cart" style="background: none; border: none;"
                      (click)="deleteProduct(product.id)"
@@ -139,3 +132,6 @@ class="alert alert-danger mg-b-0" role="alert">
     </div><!-- bd -->
   </div>
 </div>
+
+
+<!-- <button  (click)="showNotification( 'success', 'Good evening, you lovely person!' )">Click me</button> -->
