@@ -12,7 +12,7 @@
       <h4 class="card-title mb-1">New</h4>
     </div>
     <div class="card-body pt-0">
-      <form class="form-horizontal" [formGroup]="prodCreatForm" (ngSubmit)="create()" class="m-3" enctype="multipart/form-data">
+      <form class="form-horizontal m-3" [formGroup]="prodCreatForm" (ngSubmit)="create()" enctype="multipart/form-data">
         <div class="form-group">
           <input type="text" formControlName="name" class="form-control" id="name" placeholder="Product name" required>
           <div class="alert alert-warning" [hidden]="name?.valid || name?.untouched">
@@ -24,7 +24,7 @@
         <div class="mb-4">
           <p class="mg-b-10">Category</p>
           <div class="SumoSelect sumo_somename" tabindex="0" role="button" aria-expanded="true">
-            <select name="category_id" style="padding: 0.5rem;margin: 0.5rem;" class="form-control SlectBox SumoUnder" formControlName="category_id" onclick="console.log($(this).val())" onchange="console.log('change is firing')" tabindex="-1">
+            <select name="category_id" style="padding: 0.5rem;margin: 0.5rem;" class="form-control SelectBox SumoUnder" formControlName="category_id" tabindex="-1">
             <!--placeholder-->
             <option *ngFor="let category of categories" [value]="category.id" style="padding: 0.5rem;margin: 0.5rem;">{{category.name}}</option>
           </select>
@@ -67,6 +67,16 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="available">Available</label>
+          <input type="checkbox" class="form-control" formControlName="available" id="available" value=true>
+          <div class="alert alert-warning" [hidden]="quantity?.valid || quantity?.untouched">
+            <small *ngIf="quantity?.errors?.['required']">
+              Quantity is required
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
           <input type="number" class="form-control" formControlName="price" id="price" placeholder="Price">
           <div class="alert alert-warning" [hidden]="price?.valid || price?.untouched">
             <small *ngIf="price?.errors?.['required']">
@@ -75,6 +85,7 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="discount">Discount</label>
           <input type="number" class="form-control" formControlName="discount" id="discount" placeholder="Discount">
           <div class="alert alert-warning" [hidden]="discount?.valid || discount?.untouched">
             <small *ngIf="discount?.errors?.['required']">

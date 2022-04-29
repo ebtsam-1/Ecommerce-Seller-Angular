@@ -18,8 +18,8 @@ export class ProductService {
 
   }
 
-  productCreation(data: object): Observable<any> {
-    return this.httpClient.post<any>(`${environment.apiSellerURL}/products`, data);
+  productCreation(data: object): Observable<any>{
+    return this.httpClient.post(`${environment.apiSellerURL}/products`, data);
   }
 
   products(page:number = 1): Observable<any> {

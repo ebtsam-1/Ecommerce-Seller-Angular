@@ -14,7 +14,6 @@ export class TokenInterceptorService {
   constructor(private injector:Injector) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let auth=this.injector.get(AuthService)
-    console.log(req.url);
     if(req.url == `${environment.apiSellerURL}/register` || req.url == `${environment.apiSellerURL}/products` ||  req.url == `${environment.apiURL}/editprofile`)
     {
       let token=req.clone({
