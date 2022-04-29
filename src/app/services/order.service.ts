@@ -36,4 +36,13 @@ export class OrderService {
   unfulfilled(page: number = 1): Observable<any> {
     return this.httpClient.get(`${environment.apiSellerURL}/payments/unfulfilled?page=${page}`)
   }
+
+
+
+  // Dashboard counts
+
+  ordersdatacount(): Observable<any> {
+    return this.httpClient.get(`${environment.apiSellerURL}/orders/ordersdatacount`)
+  }
+
 }

@@ -20,11 +20,11 @@ export class AuthService {
   {
     return this.http.post(`${environment.apiSellerURL}/login`,data)
   }
-  logout()
-  {
-    this.http.get(environment.apiURL)
-    localStorage.removeItem('sellerToken')
-  }
+  // logout()
+  // {
+  //   this.http.get(environment.apiURL)
+  //   localStorage.removeItem('sellerToken')
+  // }
   prepareUserData()
   {
     if(this.isLogedIn)
@@ -48,19 +48,24 @@ export class AuthService {
    }
 
    myProfile():Observable<any>{
-    return this.http.get<User>(`${environment.apiURL}/myProfile`)
+    return this.http.get(`${environment.apiURL}/myProfile`)
    }
 
-   cities():Observable<City[]>{
-    return this.http.get<City[]>(`${environment.apiURL}/city`)
+   cities():Observable<any>{
+    return this.http.get(`${environment.apiURL}/city`)
    }
 
-   governates():Observable<Governate[]>{
-    return this.http.get<Governate[]>(`${environment.apiURL}/governorate`)
+   governates():Observable<any>{
+    return this.http.get(`${environment.apiURL}/governorate`)
    }
 
    editProfile(data:object):Observable<any>{
     return this.http.post(`${environment.apiURL}/editprofile`,data)
+   }
+
+   logout()
+   {
+     return this.http.get(`${environment.apiURL}/logout`)
    }
 
 }
