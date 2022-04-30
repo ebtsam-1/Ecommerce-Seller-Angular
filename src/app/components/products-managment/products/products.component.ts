@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { NotifierService } from 'angular-notifier';
 import {ProductService} from 'src/app/services/product.service';
 import {environment} from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 
 
@@ -52,18 +53,43 @@ export class ProductsComponent implements OnInit {
 
   deleteProduct(ID: number) {
 
-    if (confirm('Are You Sure!')) {
-    this.productService.productDelete(ID).subscribe(data => {
-      console.log('done')
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#364261',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.productService.productDelete(ID).subscribe(data => {
+          console.log('done')
+          this.sweetalert('success', data.message);
+          this.getPage(this.page);
 
+        }, err => {
+          this.sweetalert('error','Failed to delete product!')
+          this.getPage(this.page);
+        })
 
-
-
-    }, err => {
-
-      console.log(err);
+      }
     })
-    }
+
+  }
+
+  sweetalert(type: any, msg: any) {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      title: msg,
+      icon: type,
+      background: '#404040',
+      color: '#FFFFFF'
+    })
   }
 
 }

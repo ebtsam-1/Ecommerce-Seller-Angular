@@ -18,8 +18,8 @@ export class ProductService {
 
   }
 
-  productCreation(data: object): Observable<any> {
-    return this.httpClient.post<any>(`${environment.apiSellerURL}/products`, data);
+  productCreation(data: object): Observable<any>{
+    return this.httpClient.post(`${environment.apiSellerURL}/products`, data);
   }
 
   products(page:number = 1): Observable<any> {
@@ -43,8 +43,7 @@ export class ProductService {
   }
 
   productUpdate(id: number, data: object): Observable<any> {
-    return this.httpClient.put<any>(`${environment.apiSellerURL}/products/${id}`, JSON.stringify(data));
-
+    return this.httpClient.post<any>(`${environment.apiSellerURL}/products/${id}`, data);
   }
 
   productDelete(ID: number): Observable<any> {

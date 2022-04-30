@@ -5,6 +5,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { Category } from 'src/app/models/category';
 import { ProductService } from 'src/app/services/product.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-product',
@@ -105,6 +106,7 @@ get discount() {
         this.formData.set('quantity',this.quantity?.value);
         this.formData.set('discount',this.discount?.value);
         this.formData.set('price',this.price?.value);
+        this.formData.set('_method','put');
        console.log(this.name?.value);
 
       // let productModel = {
@@ -119,13 +121,28 @@ get discount() {
     this.productService.productUpdate(this.prodID, this.formData).subscribe(
       data => {
         console.log(data)
-         this.router.navigate(['product', 'Successfully updated'])
+
+        this.sweetalert('success', data.message)
+        this.router.navigate(['/products'])
       },
       error => {
-        this.router.navigate(['product', 'Failed to update the product'])
-        console.log(error);
+
+        this.sweetalert('error', 'Failed to update')
       });
   }
 
 
+  sweetalert(type: any, msg: any) {
+    Swal.fire({
+      toast: true,
+      position: 'top',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      title: msg,
+      icon: type,
+      background: '#404040',
+      color: '#FFFFFF'
+    })
+  }
 }

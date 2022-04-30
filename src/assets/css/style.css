@@ -4,7 +4,7 @@
 Project        :   VALEX - HTML5 Bootstrap Admin Template
 Version        :   V.1
 Create Date    :   09/05/20
-Copyright      :   Spruko Technologies Private Limited 
+Copyright      :   Spruko Technologies Private Limited
 Author         :   SprukoSoft
 Author URL     :   https://themeforest.net/user/sprukosoft
 Support	       :   support@spruko.com
@@ -19400,9 +19400,9 @@ object, embed, video {
       color: #a9a9a9; }
   /* Mobile Toggle Menu icon (X ICON) */
   .animated-arrow {
-    position: absolute;
-    left: 0;
-    top: 0;
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*top: 0;*/
     z-index: 102;
     -webkit-transition: all 0.4s ease-in-out;
     -moz-transition: all 0.4s ease-in-out;
@@ -19410,8 +19410,8 @@ object, embed, video {
     -ms-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
     cursor: pointer;
-    padding: 14px 35px 16px 0px;
-    margin: 18px 0 0 15px; }
+    padding: 14px 35px 16px 0;
+    margin: auto }
     .animated-arrow span {
       cursor: pointer;
       height: 2px;

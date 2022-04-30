@@ -3,9 +3,6 @@ import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { City } from '../models/city';
-import { Governate } from '../models/governate';
-import { User } from '../models/user';
 
 
 @Injectable({
@@ -60,7 +57,7 @@ export class AuthService {
    }
 
    editProfile(data:object):Observable<any>{
-    return this.http.post(`${environment.apiURL}/editprofile`,data)
+    return this.http.put(`${environment.apiURL}/editprofile`,data)
    }
 
    logout()
