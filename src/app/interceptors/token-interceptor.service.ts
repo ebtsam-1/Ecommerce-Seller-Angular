@@ -30,7 +30,7 @@ export class TokenInterceptorService {
         setHeaders:{
           Authorization:`Bearer ${auth.getToken()}`,
           Accept:'application/json',
-          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/json'
         }
       })
       return next.handle(token)

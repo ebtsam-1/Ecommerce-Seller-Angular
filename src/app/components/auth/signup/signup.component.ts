@@ -48,14 +48,14 @@ confirmPassword: ['', [Validators.required]],
     //  Governates import
     this.authService.governates().subscribe(res=>{
       console.log(res);
-      this.governates = res;
+      this.governates = res.data;
       console.log(this.governateID);
 
     })
 
     this.authService.cities().subscribe(res=>{
       console.log(res);
-      this.cities = res;
+      this.cities = res.data;
     })
   }
 
@@ -150,8 +150,8 @@ confirmPassword: ['', [Validators.required]],
       this.authService.register(this.formData).subscribe(
         data =>{
           console.log(data)
-          let userToken = data.data.token;
-          localStorage.setItem('userToken',userToken);
+          let sellerToken = data.data.token;
+          localStorage.setItem('sellerToken',sellerToken);
           this.router.navigate(['home']);
         },
         error =>{

@@ -31,6 +31,7 @@ export class CreateProductComponent implements OnInit {
       quantity: ['', [Validators.required]],
       price: ['', [Validators.required]],
       discount: ['', [Validators.required]],
+
     });
   }
 
@@ -64,6 +65,7 @@ export class CreateProductComponent implements OnInit {
     return this.prodCreatForm.get('discount');
   }
 
+
   onFileSelect(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0] as File;
@@ -86,8 +88,8 @@ export class CreateProductComponent implements OnInit {
           this.router.navigate(['/products'])
         },
         error: (err) => {
-          alert(JSON.stringify(err))
-          this.sweetalert('error', 'Failed')
+
+          this.sweetalert('error', 'Failed to create product')
         }
       })
   }

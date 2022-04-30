@@ -43,8 +43,7 @@ export class ProductService {
   }
 
   productUpdate(id: number, data: object): Observable<any> {
-    return this.httpClient.put<any>(`${environment.apiSellerURL}/products/${id}`, JSON.stringify(data));
-
+    return this.httpClient.post<any>(`${environment.apiSellerURL}/products/${id}`, data);
   }
 
   productDelete(ID: number): Observable<any> {

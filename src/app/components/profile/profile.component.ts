@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   imageURL = environment.images
 
   user: User = {} as User;
-
+  formData : FormData = new FormData()
   EditUsrForm: FormGroup;
   governates: Governate[] = [];
   cities:City[] = [];
@@ -126,10 +126,18 @@ export class ProfileComponent implements OnInit {
       // password: this.EditUsrForm.value.password,
       // password_confirmation: this.EditUsrForm.value.password,
     }
+    this.formData.set('name',this.name?.value);
+    this.formData.set('email',this.email?.value);
+    this.formData.set('phone',this.phone?.value);
+    this.formData.set('city_id', this.city?.value);
+    this.formData.set('address',this.address?.value);
 
-    console.log(JSON.stringify(userModel));
 
-    this.authService.editProfile(userModel).subscribe(
+
+    console.log(this.formData);
+    // console.log(JSON.stringify(userModel));
+
+    this.authService.editProfile(this.formData).subscribe(
       data => {
         console.log(data)
         // this.Router.navigate(['user/profile']);

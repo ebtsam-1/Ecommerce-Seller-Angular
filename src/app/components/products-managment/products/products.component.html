@@ -104,7 +104,7 @@ class="alert alert-danger mg-b-0" role="alert">
                   <td>{{product.discount}}</td>
                   <td>{{product.available}}</td>
                   <td>{{product.category.name}}</td>
-                  <td><a routerLink="/edit/{{product.id}}" class="btn btn-dark">Edit</a></td>
+                  <td><a routerLink="edit/{{product.id}}" class="btn btn-dark">Edit</a></td>
                   <td style="display: flex; justify-content: center; align-items: center;">
                     <button  class="remove-from-cart" style="background: none; border: none;"
                      (click)="deleteProduct(product.id)"

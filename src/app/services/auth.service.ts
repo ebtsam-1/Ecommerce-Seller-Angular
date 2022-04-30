@@ -57,7 +57,7 @@ export class AuthService {
    }
 
    editProfile(data:object):Observable<any>{
-    return this.http.post(`${environment.apiURL}/editprofile`,data)
+    return this.http.put(`${environment.apiURL}/editprofile`,data)
    }
 
    logout()
